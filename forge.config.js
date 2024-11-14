@@ -3,6 +3,7 @@ const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 
 module.exports = {
   packagerConfig: {
+    icon: 'images/icon',
     asar: true,
   },
   rebuildConfig: {},
@@ -10,6 +11,8 @@ module.exports = {
     {
       name: '@electron-forge/maker-squirrel',
       config: {
+        iconUrl: 'https://game-mods-studio.github.io/favicon.ico',
+        setupIcon: 'images/icon.ico',
         certificateFile: './cert.pfx',
         certificatePassword: process.env.CERTIFICATE_PASSWORD
       },
@@ -20,7 +23,15 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {
+        options: {
+          icon: 'images/icon.png',
+          category: 'Utility',
+          description: 'A launcher for Gamemodstudios',
+          name: 'Gamemodstudios Launcher',
+          copyright: 'Copyright © 2024 Gamemodstudios'
+        }
+      },
     },
     {
       name: '@electron-forge/maker-rpm',
